@@ -1,0 +1,67 @@
+<div class="valign-wrapper" style="height: calc(100vh - 64px);margin: 0;margin-top:-5vh;padding: 0;">
+
+    <style>
+
+        #wrappers{
+            height: calc(100vh - 64px);
+        }
+
+        #menu {
+            /* margin-top: calc(25vh - 64px); */
+
+            margin-top: 0vh;
+            display: block;
+            margin-left: 5vw;
+        }
+
+        #menu button{
+            background-color: #222222;
+            display: block;
+            color: white;
+            width: 40vw;
+            height: 10vh;
+        }
+
+        #menu button:hover{
+            background-color: palevioletred;
+            color:#222222;
+        }
+
+        #menu-title {
+            width: 40vw;
+            text-align: center;
+            font-family: bungee;
+            font-size: 5vw;
+            color: palevioletred;
+        }
+
+        #menu-song {
+            color:white;
+            width: 40vw;
+            text-align: center;
+        }
+
+        #main-canvas{
+            /* width: 50vw; */
+            /* height: calc(100vh - 64px); */
+        }
+
+    </style>
+    <div id="canvas1" class="col s3"></div>
+
+    <div id="menu" class="center-align col s6" style="width:100vw;">
+            <h2 id="menu-title">Beat Defence</h2>
+            <button onclick="menuClicked('game');" class="btn btn-large" id="menu-1">Play</button>
+            <br><br>
+            <button class="btn btn-large" id="menu-2">How To Play</button>
+            <br><br>
+            <button class="btn btn-large" id="menu-3">Options</button>
+            <br>
+            <p id="menu-song">Now Playing ""</p>
+    </div>
+    <div id="main-canvas" class="col s3">
+    </div>
+
+    <script src="./home/home.js"></script>
+
+</div>
