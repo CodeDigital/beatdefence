@@ -10,6 +10,6 @@ ipcRenderer.on('home', function() {
 
 function changePage(newPage) {
     $("#main").load(newPage + "/" + newPage + ".html", function (responseText, textStatus, req) {
-        console.log(req);
+        //console.log(req);
     }).hide().fadeIn('slow', 'swing');
 }

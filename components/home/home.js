@@ -4,7 +4,7 @@ allSongs = fs.readdirSync(url.format({
     slashes: true
   }));
 
-console.log(allSongs);
+//console.log(allSongs);
 var song;
 var fft, amplitude;
 var freqs = 64;
@@ -13,10 +13,13 @@ var dAngle = (Math.PI) / (reps*freqs);
 var weight = 2;
 
 function menuClicked(newPage){
+    sketch1 = null;
+    sketch2 = null;
     song.onended(function() {
 
     });
     song.stop();
+    song = null;
     changePage(newPage);
 }
 
@@ -27,10 +30,12 @@ var sketch1 = function(p) {
         fft = new p5.FFT();
         amplitude = new p5.Amplitude();
         p.createCanvas(p.windowWidth/4,p.windowHeight - 70);
+        p.resizeCanvas(window.innerWidth/4,window.innerHeight - 70);
         newSong();
     }
 
     p.draw = function() {
+        p.frameRate(144);
         p.background("#111111");
         p.translate(p.width,p.height/1.75);
         //p.translate(p.width/2,p.height/2);
@@ -99,7 +104,7 @@ var sketch1 = function(p) {
         var nSong = p.random(allSongs);
 
         var menuSong = document.getElementById('menu-song');
-        console.log(menuSong);
+        //console.log(menuSong);
         menuSong.innerText = 'Now Playing "' + nSong + '"';
 
         song = p.loadSound('../music/' + nSong, function() {
@@ -113,15 +118,18 @@ var sketch1 = function(p) {
 }
 
 var sketch2 = function(p) {
+    p.resizeCanvas(p.windowWidth/4,p.windowHeight - 70);
 
     p.setup = function() {
         fft = new p5.FFT();
         amplitude = new p5.Amplitude();
         p.createCanvas(p.windowWidth/4,p.windowHeight - 70);
+        p.resizeCanvas(window.innerWidth/4,window.innerHeight - 70);
         //newSong();
     }
 
     p.draw = function() {
+        p.frameRate(144);
         p.background("#111111");
         p.translate(0,p.height/1.75);
         //p.translate(p.width/2,p.height/2);
