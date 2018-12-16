@@ -1,6 +1,7 @@
 const {
     ipcRenderer
 } = require('electron');
+const mtrap = require('mousetrap');
 const fs = require('fs');
 const url = require('url');
 const path = require('path');

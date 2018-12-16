@@ -15,30 +15,16 @@ db.getSettings(function (settings) {
 });
 
 function saveSettings() {
-    console.log();
     newSettings.musicVolume = parseInt(musicVolumeSlider.value);
     newSettings.effectVolume = parseInt(effectVolumeSlider.value);
 
     db.setSettings(newSettings);
-
 }
 
 musicVolumeSlider.onmousemove = function () {
-    console.log(musicVolumeSlider.value);
     musicVolumeValue.innerText = "Music Volume: " + musicVolumeSlider.value;
 };
 
 effectVolumeSlider.onmousemove = function () {
-    console.log(effectVolumeSlider.value);
     effectVolumeValue.innerText = "Effect Volume: " + effectVolumeSlider.value;
 };
-
-musicVolumeSlider.onchange = function () {
-    console.log(musicVolumeSlider.value);
-};
-
-effectVolumeSlider.onchange = function () {
-    console.log(effectVolumeSlider.value);
-};
-
-console.log(musicVolumeSlider.value);

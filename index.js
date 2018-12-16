@@ -8,6 +8,7 @@ const {
     Menu,
     ipcMain
 } = require('electron');
+const menu = new Menu();
 const url = require('url');
 const path = require('path');
 
@@ -45,6 +46,7 @@ app.on("ready", function () {
     ipcMain.on('playGame', function (e, gameOptions) {
         window.webContents.send('game');
         ipcMain.on('sendOptions', function () {
+            gameOptions.menu = menu;
             window.webContents.send('gameOptions', gameOptions);
 
         });

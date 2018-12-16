@@ -1,5 +1,56 @@
 <div class="valign-wrapper" style="height: calc(100vh - 64px);margin: 0;margin-top:-5vh;padding: 0;">
-    <button onclick="changePage('home');">Click</button>
+
+    <style>
+        #pause-menu {
+            filter: blur(10px);
+            display: none;
+            position: fixed;
+            height: calc(100vh - 64px);
+            width: 100vw;
+            text-align: center;
+            margin: 0;
+            margin-top: 150px;
+            padding: 0;
+        }
+
+        #pause-title {
+            overflow-y: hidden;
+            width: 100vw;
+            text-align: center;
+            font-family: bungee;
+            font-size: 5vw;
+            color: palevioletred;
+        }
+
+        #pause-menu button {
+            background-color: #222222;
+            display: block;
+            color: white;
+            margin-left: 30vw;
+            width: 40vw;
+            height: 10vh;
+        }
+
+        #pause-menu button:hover {
+            background-color: palevioletred;
+            color: #222222;
+        }
+
+        #pause-song {
+            color: white;
+            width: 100vw;
+            text-align: center;
+        }
+    </style>
+
+    <div class="center-align" id="pause-menu">
+        <h2 id="pause-title">Game Paused</h2>
+        <button onclick="unpause();" class="btn btn-large" id="pause-1">Continue</button>
+        <br><br>
+        <button onclick="changePage('home');" class="btn btn-large" id="pause-2">Main Menu</button>
+        <br>
+        <p id="pause-song">Now Playing ""</p>
+    </div>
 
     <script src="./game/game.js"></script>
 </div>
