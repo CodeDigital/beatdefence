@@ -2,14 +2,28 @@
 
     <style>
         #selector-list {
-            max-height: calc(99vh - 74px);
-            overflow-y: auto;
+            height: calc(99vh - 74px);
+            background-color: #222222;
+            overflow-y: hidden;
             border-radius: 1vw;
             width: 33vw;
             border: 0;
         }
 
+        #selector-list::-webkit-scrollbar {
+            border-top-right-radius: 1vw;
+            border-bottom-right-radius: 1vw;
+        }
+
+        #selector-list-container {
+            max-height: calc(90vh - 74px);
+            overflow-y: auto;
+        }
+
         #selector-list-container li {
+            padding-top: 4vh;
+            padding-bottom: 4vh;
+            border: 0;
             user-select: none;
             cursor: pointer;
             -webkit-app-region: no-drag;
@@ -25,6 +39,11 @@
             color: #222222;
         }
 
+        @media only screen and (max-height: 700px) {
+            #selector-list-container li:last-child {
+                padding-bottom: 6vh;
+            }
+        }
 
         #selector-title {
             width: 33vw;
@@ -35,6 +54,7 @@
             font-family: bungee;
             font-size: 2.5vw;
             background-color: #222222;
+            border: 0;
             color: palevioletred;
         }
 
@@ -79,7 +99,7 @@
         }
 
         #selector-spacer {
-            border-top: 1px solid white;
+            /* border-top: 1px solid white; */
             background-color: #222222;
         }
 
@@ -91,9 +111,9 @@
             margin-right: 2vw;
             margin-top: 1vh;
             margin-bottom: 1vh;
-            background-color: #222222;
+            background-color: #111111;
             color: white;
-            border: 1px solid white;
+            /* border: 1px solid white; */
         }
 
         #selector-back:hover {
@@ -118,7 +138,7 @@
         <div class="col s4">
             <ul class="collection with-header" id="selector-list">
                 <li class="collection-header valign-wrapper center-align" id="selector-title"> <button onclick="selectorBack();"
-                        class="btn btn-large btn-floating" id="selector-back"><i class="material-icons" id="back-icon">arrow_back</i></button>
+                        class="btn btn-large btn-floating hoverable" id="selector-back"><i class="material-icons" id="back-icon">arrow_back</i></button>
                     Select A Song
                     <br></li>
                 <div id="selector-list-container">

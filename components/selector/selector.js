@@ -19,7 +19,7 @@ db.getSettings(function (settings) {
 
 allSongs.forEach(function (songName) {
   var newLi = document.createElement('li');
-  newLi.className = 'collection-item';
+  newLi.className = 'collection-item truncate';
   newLi.innerText = songName;
   //newLi.setAttribute('onclick', 'selectorClicked(' + songName + ')');
   newLi.onclick = function () {
