@@ -1,6 +1,6 @@
 const filesystem = require('fs');
 
-module.exports.setSettings = function(newSettings) {
+module.exports.setSettings = function (newSettings) {
     var settingsBuffer = JSON.stringify(newSettings);
 
     if (fs.existsSync(__dirname + "\\settings.json")) {
@@ -19,20 +19,20 @@ module.exports.setSettings = function(newSettings) {
     }
 }
 
-module.exports.getSettings = function(callback) {
+module.exports.getSettings = function (callback) {
     let settings;
     var settingsBuffer;
 
-    filesystem.readFile(__dirname + "\\settings.json", function(err, data) {
-        if(data != ""){
+    filesystem.readFile(__dirname + "\\settings.json", function (err, data) {
+        if (data != "") {
             settingsBuffer = data;
             settings = JSON.parse(settingsBuffer);
             callback(settings);
-        }else{
+        } else {
             fs.readFile(__dirname + "\\defaultSettings.json", function (err, data) {
-                if (err){
+                if (err) {
 
-                }else{
+                } else {
                     var createStream = fs.createWriteStream(__dirname + "\\settings.json");
                     createStream.end();
 

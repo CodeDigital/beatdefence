@@ -4,14 +4,14 @@
 
     function init() {
 
-        if(document.getElementById("min-btn")){
+        if (document.getElementById("min-btn")) {
             document.getElementById("min-btn").addEventListener("click", function (e) {
                 const window = remote.getCurrentWindow();
                 window.minimize();
             });
         }
 
-        if(document.getElementById("max-btn")){
+        if (document.getElementById("max-btn")) {
             document.getElementById("max-btn").addEventListener("click", function (e) {
                 const window = remote.getCurrentWindow();
                 if (!window.isMaximized()) {

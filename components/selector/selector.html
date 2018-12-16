@@ -1,0 +1,152 @@
+<div class="" style="height: calc(100vh - 64px);margin: 0;padding: 0;overflow: hidden;">
+
+    <style>
+        #selector-list {
+            max-height: calc(99vh - 74px);
+            overflow-y: auto;
+            border-radius: 1vw;
+            width: 33vw;
+            border: 0;
+        }
+
+        #selector-list-container li {
+            user-select: none;
+            cursor: pointer;
+            -webkit-app-region: no-drag;
+            /* overflow-x: scroll; */
+            /* padding: 2vh; */
+            /* overflow-y: hidden; */
+            background-color: #222222;
+            /* height: 5vh; */
+        }
+
+        #selector-list-container li:hover {
+            background-color: palevioletred;
+            color: #222222;
+        }
+
+
+        #selector-title {
+            width: 33vw;
+            margin: 0;
+            padding: 0;
+            overflow-y: hidden;
+            text-align: center;
+            font-family: bungee;
+            font-size: 2.5vw;
+            background-color: #222222;
+            color: palevioletred;
+        }
+
+        #selector-options {
+            border-radius: 1vw;
+            margin-left: 6px;
+            margin-top: 8px;
+            display: block;
+            width: calc(100% - 3px);
+            height: calc(99vh - 74px);
+            background-color: #222222;
+        }
+
+        #selector-game-options {
+            display: none;
+            padding: 2vw;
+            padding-top: 0;
+            text-align: justify;
+        }
+
+        #selector-option-name {
+            font-family: bungee;
+            color: palevioletred;
+            font-size: 2;
+            padding-right: 2vw;
+        }
+
+        #selector-play-btn {
+            width: 100%;
+            background: palevioletred;
+            color: white;
+        }
+
+        #selector-play-btn:hover {
+            background: #111111;
+            color: palevioletred;
+        }
+
+        #selector-options-placeholder {
+            width: 100%;
+            text-align: center;
+        }
+
+        #selector-spacer {
+            border-top: 1px solid white;
+            background-color: #222222;
+        }
+
+        #selector-back {
+            /* position: absolute; */
+            display: block;
+            float: left;
+            margin-left: 1vw;
+            margin-right: 2vw;
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+            background-color: #222222;
+            color: white;
+            border: 1px solid white;
+        }
+
+        #selector-back:hover {
+            background-color: palevioletred;
+            color: #222222;
+        }
+
+        #back-icon {
+            color: white;
+        }
+
+        #back-icon:hover {
+            color: #222222;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            background-color: palevioletred;
+        }
+    </style>
+    <div class="row">
+
+        <div class="col s4">
+            <ul class="collection with-header" id="selector-list">
+                <li class="collection-header valign-wrapper center-align" id="selector-title"> <button onclick="selectorBack();"
+                        class="btn btn-large btn-floating" id="selector-back"><i class="material-icons" id="back-icon">arrow_back</i></button>
+                    Select A Song
+                    <br></li>
+                <div id="selector-list-container">
+                </div>
+                <li class="collection-item" id="selector-spacer"></li>
+            </ul>
+        </div>
+
+        <div class="col s8" style="display:inline;">
+            <div id="selector-options">
+                <br>
+                <h3 id="selector-title">Gamemode Selection</h3>
+                <div id="selector-game-options">
+                    <p><b id="selector-option-name">Song</b> <span id="song-name">songName</span></p>
+
+                    <button class="btn btn-large" id="selector-play-btn" onclick="playGame();">Play</button>
+
+                </div>
+                <h2 id="selector-options-placeholder">Select A Song To Get Game Options</h2>
+            </div>
+        </div>
+
+        <div id="preview" style="display:none;">
+
+        </div>
+
+    </div>
+
+    <script src="./selector/selector.js"></script>
+
+</div>

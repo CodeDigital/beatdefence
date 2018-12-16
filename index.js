@@ -11,9 +11,9 @@ const {
 const url = require('url');
 const path = require('path');
 
-app.disableHardwareAcceleration();
+//app.disableHardwareAcceleration();
 
-app.on("ready", function(){
+app.on("ready", function () {
 
     let window = new BrowserWindow({
         titleBarStyle: 'Beat Defence',
@@ -22,22 +22,32 @@ app.on("ready", function(){
         height: 720,
         show: false,
         minHeight: 600,
-        minWidth: 800 
+        minWidth: 800
     });
-    
+
     window.loadURL(url.format({
         pathname: path.join(__dirname, 'components/main.html'),
         protocol: 'file:',
         slashes: true
-      }));
-    
-    if(process.env.NODE_ENV == 'dev') {
+    }));
+
+    window.webContents.setFrameRate(144);
+
+    if (process.env.NODE_ENV == 'dev') {
         window.webContents.openDevTools();
     }
-    
-    window.on('ready-to-show', function() {
+
+    window.on('ready-to-show', function () {
         window.show();
         window.webContents.send('home');
+    });
+
+    ipcMain.on('playGame', function (e, gameOptions) {
+        window.webContents.send('game');
+        ipcMain.on('sendOptions', function () {
+            window.webContents.send('gameOptions', gameOptions);
+
+        });
     });
 
 });
@@ -46,4 +56,3 @@ app.on("ready", function(){
 
 // Make it so to destroy the missile you have to deploy the shield, which only activates for 1 beat. So you have to time it pretty well.
 // The missiles can still be destroyed if the beat is slightly missed (maybe missile length/killability offbeat is determined by player selected difficulty.)
-
