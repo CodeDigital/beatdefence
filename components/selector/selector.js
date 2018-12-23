@@ -12,6 +12,7 @@ var selectedSong;
 var sketch;
 var song;
 var songVolume;
+var cease = function(){};
 
 db.getSettings(function (settings) {
   songVolume = settings.musicVolume / 100;
@@ -23,6 +24,7 @@ allSongs.forEach(function (songName) {
   newLi.innerText = songName;
   //newLi.setAttribute('onclick', 'selectorClicked(' + songName + ')');
   newLi.onclick = function () {
+    cease();
     sketch = null;
     if (song) {
       song.stop();
@@ -30,6 +32,11 @@ allSongs.forEach(function (songName) {
     song = null;
     console.log('clicked!');
     sketch = function (p) {
+
+      cease = function(){
+        p.remove();
+      }
+
       p.setup = function () {
         p.createCanvas(1, 1);
         song = p.loadSound('../music/' + songName, function () {
