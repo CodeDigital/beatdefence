@@ -32,7 +32,7 @@ app.on("ready", function () {
         slashes: true
     }));
 
-    window.webContents.setFrameRate(144);
+    //window.webContents.setFrameRate(144);
 
     if (process.env.NODE_ENV == 'dev') {
         window.webContents.openDevTools();
@@ -44,11 +44,12 @@ app.on("ready", function () {
     });
 
     ipcMain.on('playGame', function (e, gameOptions) {
+        console.log(gameOptions.song);
         window.webContents.send('game');
-        ipcMain.on('sendOptions', function () {
-            gameOptions.menu = menu;
-            window.webContents.send('gameOptions', gameOptions);
+        ipcMain.once('sendOptions', function () {
+            console.log(gameOptions.song);
 
+            window.webContents.send('gameOptions', gameOptions);
         });
     });
 
