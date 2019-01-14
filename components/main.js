@@ -17,6 +17,7 @@ ipcRenderer.on('game', function () {
 });
 
 function changePage(newPage) {
+    $("#main").empty();
     $("#main").load(newPage + "/" + newPage + ".html", function (responseText, textStatus, req) {
         //console.log(req);
     }).hide().fadeIn(15, 'swing');

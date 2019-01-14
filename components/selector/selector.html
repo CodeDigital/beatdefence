@@ -30,7 +30,6 @@
             /* overflow-x: scroll; */
             /* padding: 2vh; */
             /* overflow-y: hidden; */
-            background-color: #222222;
             /* height: 5vh; */
         }
 
@@ -38,7 +37,17 @@
             background-color: palevioletred;
             color: #111111;
             font-weight: bold;
-            transition: 50ms;
+            transition: 0.1s;
+        }
+
+        #selector-list-item {
+            background-color: #222222;
+        }
+
+        #selector-list-item-clicked {
+            background-color: palevioletred;
+            color: #111111;
+            font-weight: bold;
         }
 
         @media only screen and (max-height: 700px) {
@@ -80,7 +89,7 @@
         #selector-option-name {
             font-family: bungee;
             color: palevioletred;
-            font-size: 2;
+            font-size: 2.5vh;
             padding-right: 2vw;
         }
 

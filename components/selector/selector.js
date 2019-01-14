@@ -12,6 +12,7 @@ var selectedSong;
 var sketch;
 var song;
 var songVolume;
+var cease = function () {};
 
 db.getSettings(function (settings) {
   songVolume = settings.musicVolume / 100;
@@ -20,16 +21,30 @@ db.getSettings(function (settings) {
 allSongs.forEach(function (songName) {
   var newLi = document.createElement('li');
   newLi.className = 'collection-item hoverable truncate';
+  newLi.id = 'selector-list-item';
   newLi.innerText = songName;
   //newLi.setAttribute('onclick', 'selectorClicked(' + songName + ')');
   newLi.onclick = function () {
+    var nodes = selectorContainer.children;
+    for (let index = 0; index < nodes.length; index++) {
+      var node = nodes[index];
+      node.id = 'selector-list-item';
+    }
+
+    newLi.id = 'selector-list-item-clicked';
+
+    cease();
     sketch = null;
     if (song) {
       song.stop();
     }
     song = null;
-    console.log('clicked!');
     sketch = function (p) {
+
+      cease = function () {
+        p.remove();
+      }
+
       p.setup = function () {
         p.createCanvas(1, 1);
         song = p.loadSound('../music/' + songName, function () {
@@ -69,9 +84,9 @@ function playGame() {
     song.stop();
   }
   song = null;
-
-  gameOptions.song = selectedSong;
-
+  console.log('this broke?')
+  gameOptions.song = selectorSongName.innerText;
+  gameOptions.gamemode = 'classic';
   ipcRenderer.send('playGame', gameOptions);
 }
 

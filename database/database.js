@@ -24,7 +24,7 @@ module.exports.getSettings = function (callback) {
     var settingsBuffer;
 
     filesystem.readFile(__dirname + "\\settings.json", function (err, data) {
-        if (data != "") {
+        if (data != "" && !err) {
             settingsBuffer = data;
             settings = JSON.parse(settingsBuffer);
             callback(settings);
@@ -38,7 +38,7 @@ module.exports.getSettings = function (callback) {
 
                     settingsBuffer = data;
                     var newSettings = JSON.parse(settingsBuffer);
-                    setSettings(newSettings);
+                    module.exports.setSettings(newSettings);
 
                     callback(newSettings);
                 }

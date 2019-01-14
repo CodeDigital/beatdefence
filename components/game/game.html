@@ -1,10 +1,14 @@
-<div class="valign-wrapper" style="height: calc(100vh - 64px);margin: 0;margin-top:-5vh;padding: 0;">
+<div class="valign-wrapper" style="height: calc(100vh - 64px);margin: 0;margin-top:-5vh;padding: 0;overflow-y: none;">
 
     <style>
+
+        #game-view {
+            margin-top: calc(3vh + 64px);
+        }
+
         #pause-menu {
-            filter: blur(10px);
             display: none;
-            position: fixed;
+            position:fixed;
             height: calc(100vh - 64px);
             width: 100vw;
             text-align: center;
@@ -43,14 +47,22 @@
         }
     </style>
 
+    <div id="game-view"></div>
+
     <div class="center-align" id="pause-menu">
         <h2 id="pause-title">Game Paused</h2>
         <button onclick="unpause();" class="btn btn-large" id="pause-1">Continue</button>
         <br><br>
-        <button onclick="changePage('home');" class="btn btn-large" id="pause-2">Main Menu</button>
+        <button onclick="returnHome();" class="btn btn-large" id="pause-2">Main Menu</button>
         <br>
         <p id="pause-song">Now Playing ""</p>
     </div>
 
+    <script src="./game/gamemodes/classic.js"></script>
     <script src="./game/game.js"></script>
+    <script>
+        console.log('called');
+        ipcRenderer.send('sendOptions');
+    </script>
+
 </div>
