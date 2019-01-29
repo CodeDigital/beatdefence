@@ -4,12 +4,14 @@ var pauseScripts = document.getElementById('scripts');
 var gameView = document.getElementById('game-view');
 var isPaused = false;
 var musicVolume;
+var effectVolume;
 
 ipcRenderer.once('gameOptions', function (e, gameOptions) {
     //console.log('gameoption');
     db.getSettings(function (settings) {
 
         musicVolume = settings.musicVolume;
+        effectVolume = settings.effectVolume;
         console.log(gameOptions);
         pauseSong.innerText = 'Now Playing "' + gameOptions.song + '"';
         
@@ -50,7 +52,13 @@ function pause() {
 }
 
 function returnHome() {
-    song.stop();
+    if(song){
+        song.stop();
+    }else{
+        mainSong.stop();
+        subSong.stop();
+    }
+    
     cease();
     sketch = null;
     gameAdd = null;
